@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-success" >Success</button>
+
+<div class="input-group input-group-sm">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="name">
+</div>
+สวัสดี{{name}}
+<div class="text center">รายชื่อนักเรียน</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>StudentID</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>{{student.name}}</td>
+          <td>{{student.studentID}}</td>
+          <td>{{student.weight}}</td>
+          <td>{{student.height}}</td>
+          <td>{{student.weight/((student.height/100)*(student.height/100))}}</td>
+          <td *ngIf="student.weight/((student.height/100)*(student.height/100)) > 25">อ้วน</td>
+          <td *ngIf="student.weight/((student.height/100)*(student.height/100)) < 25">ผอม</td>
+          <td *ngIf="student.weight/((student.height5/100)*(student.height/100)) == 25">ปกติ</td>
+      </tr>
+    <tr *ngFor="let i of studentlist">
+      <td>{{i.name}}</td>
+      <td>{{i.studentID}}</td>
+      <td>{{i.weight}}</td>
+      <td>{{i.height}}</td>
+      <td>{{i.weight/((i.height/100)*(i.height/100))}}</td>
+      <td *ngIf="i.bmi > 25">อ้วน</td>
+      <td *ngIf="i.bmi < 25">ผอม</td>
+      <td *ngIf="i.bmi == 25">ปกติ</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<router-outlet></router-outlet>
