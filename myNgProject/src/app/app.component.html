@@ -1,1 +1,27 @@
-m,mm,
+สวัสดี {{name}}
+<hr>
+<h3 class ="text-center">WORKSHOP3</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>รหัสสินค้า</th>
+      <th>ชื่อสินค้า</th>
+      <th>ราคาสินค้า</th>
+      <th>รูปสินค้า</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of productlist">
+      <td>{{p.pID}}</td>
+      <td>{{p.pName}}</td>
+      <td>{{p.pCost}}</td>
+      <td><img src="{{p.img}}" alt=""></td>
+      <button type="button" class="btn btn-warning"(click)="selectProduct(p)">เลือกสินค้า</button>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-6 bg-Info">test1</div>
+  <div class="col-6 bg-Info">test2</div>
+</div>
+<app-product-detail [selectedProduct]="selectedProduct"></app-product-detail>
