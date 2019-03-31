@@ -1,4 +1,82 @@
-<h1>คูณจำนวน</h1>
+<div class="contrainer">
+<h1 class="text-center">คูณจำนวน</h1>
+<div class = "row">
+  <div class="col-5">
+      <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Number 1</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"[(ngModel)] = "request.key1">
+        </div>
+    <!-- <label>ตัวที่ 1 </label>
+    <input [(ngModel)] = "request.key1"> -->
+  </div>
+  <div class="col-5">
+      <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Number 2</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"[(ngModel)] = "request.key2">
+        </div>
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click) = "getData()">คำนวณ</button>
+  </div>
+</div>
+  <label> ผลลัพธ์ : </label>
+  <label>{{result}}</label></div>
+<hr><div class="container">
 
-<button type="button" class="btn btn-success" >Success</button>
+<h1 class="text-center" style="color:coral">ข้อมูลจ้าา</h1>
+<div class = "row">
+<div class="col-5">
+    <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Number 2</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"[(ngModel)] = "UserDetail.id">
+      </div>
+</div>
+<div class="col-5">
+    <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Number 2</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"[(ngModel)] = "UserDetail.name">
+      </div>
+      <br>
+</div>
+</div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let n of noteDetail">{{n.name }}
+      <button type="button" style="float:right;" class="btn btn-dark" (click)="selectNote(n.list)">ดูรายละเอียด</button>
+      <button type="button" style="float:right;" class="btn btn-warning" (click)="editNote(n)">แก้ไขชื่อ</button>
+    </li>
+    <li class="list-group-item">แก้ไขชื่อ note {{editNoteDetail.note_id}}<input class="form-control" name="noteName"[(ngModel)]="editNoteDetail.name">
+    <br>
+    <button *ngIf="editNoteDetail.name" type="button"  class="btn btn-dark" (click)="updateNoteName()">แก้ไข</button>  <br>
+    <small *ngIf="errorMsg">{{errorMsg}}</small>
+    </li>
+  </ul>
+  <hr>
+  <h4>รายละเอียด note</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Priority  </th>
+        <th> รายละเอียด </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listDetail"
+      [ngClass]="{'bg-danger':list.priority>5,
+      'bg-info list.priority' :list.priority<5}">
+        <td>{{list.priority}}</td>
+        <td>{{list.detail}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
+  
 
