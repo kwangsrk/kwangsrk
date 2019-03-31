@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonServiceService } from './common-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,49 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myNgProject';
+  request={
+    key1:50,
+    key2:10
 
-  name: string = "Miss u na";
-  score: number = 99;
-
-  student = {
-    name: "Kwang",
-    studentID: "5921602795",
-    weight: 51,
-    height: 171
   }
-  studentlist = [{
-    name: "Kwang",
-    studentID: "5921602795",
-    weight: 51,
-    height: 171
-  },
-  {
-    name: "Kwang",
-    studentID: "5921602795",
-    weight: 47,
-    height: 171
-  },
-  {
-    name: "Kwang",
-    studentID: "5921602795",
-    weight: 80,
-    height: 171
+  constructor(private service : CommonServiceService){
+    this.getData();
   }
-
-
-
-
-
-  ]
-  constructor() {
-    this.studentlist.map((object, index) => {
-       let obj:any =object;
-         obj.bmi = object.weight/((object.height/100)*(object.height/100))
-         return obj;
-      let student = "student in function";
-      console.log(this.studentlist);
-      console.log(student);
-    })
+  getData(){
+    console.log(this.request);
+    
+    this.service.getData(this.request).subscribe((response)=>{
+      console.log(response);
+    });
   }
+  
 }
